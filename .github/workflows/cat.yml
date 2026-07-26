@@ -1,4 +1,4 @@
-name: Cat of the Minute
+name: 🐱 Cat of the Minute
 
 on:
   schedule:
@@ -13,28 +13,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Python
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
+      - name: 📦 Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Run Script
+      - name: 🐱 Update README
         run: python scripts/update_cat.py
 
-      - name: Commit Changes
+      - name: 🚀 Commit & Push
         run: |
           git config user.name "codingwithmaajid"
-          git config user.email "abdulmaajid7002@gmail.com"
+          git config user.email "YOUR_GITHUB_EMAIL"
 
           git add README.md
 
-          git diff --cached --quiet || (
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
             git commit -m "🐱 Update cat image"
             git push
-          )
+          fi
