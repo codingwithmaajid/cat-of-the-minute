@@ -4,4 +4,4 @@ This repository automatically fetches a random cat using GitHub Actions.
 
 Last updated automatically.
 
-![Random Cat](https://cdn2.thecatapi.com/images/MTkwODE5Mw.png)
+![Random Cat](https://cdn2.thecatapi.com/images/3oh.gif)
